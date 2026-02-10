@@ -1,24 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import React, { useState, ReactNode } from "react";
-import { Link } from "react-router-dom";
-import { createPageUrl } from "./utils";
-import {
-  Home,
-  Dumbbell,
-  Calendar,
-  TrendingUp,
-  Users,
-  QrCode,
-  Bell,
-  User,
-  Menu,
-  X,
-} from "lucide-react";
+import Navigation from "@/components/Navigation";
 
-import { useQuery } from "@tanstack/react-query";
-import type { LucideIcon } from "lucide-react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,75 +13,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-/* =======================
-   Types
-======================= */
+export const metadata: Metadata = {
+  title: "PSA - Push Sweat Achieve",
+  description: "Your personal fitness companion",
+};
 
-interface LayoutProps {
-  children: ReactNode;
-  currentPageName: string;
-  fetchUnreadNotifications?: () => Promise<Notification[]>;
-}
-
-export interface Notification {
-  id: string;
-  is_read: boolean;
-  // extend as needed
-}
-
-interface NavItem {
-  name: string;
-  icon: LucideIcon;
-  page: string;
-}
-
-/* =======================
-   Component
-======================= */
-
-export default function Layout({
+export default function RootLayout({
   children,
-  currentPageName,
-  fetchUnreadNotifications,
-}: LayoutProps) {
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
-
-  const { data: notifications = [] } = useQuery<Notification[]>({
-    queryKey: ["notifications-unread"],
-    queryFn: fetchUnreadNotifications ?? (async () => []),
-    enabled: !!fetchUnreadNotifications,
-  });
-
-  const navItems: NavItem[] = [
-    { name: "Dashboard", icon: Home, page: "Dashboard" },
-    { name: "Workouts", icon: Dumbbell, page: "Workouts" },
-    { name: "Book", icon: Calendar, page: "Booking" },
-    { name: "Progress", icon: TrendingUp, page: "Progress" },
-    { name: "Community", icon: Users, page: "Community" },
-  ];
-
-  const isActive = (page: string): boolean =>
-    currentPageName === page;
-
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white">
-      {/* Top Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-lg border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link
-            to={createPageUrl("Dashboard")}
-            className="flex items-center gap-3"
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-[#4A5D23] to-[#6B8E23] rounded-xl flex items-center justify-center font-black text-lg">
-              PSA
-            </div>
-            <span className="font-bold text-lg tracking-tight hidden sm:block">
-              Push Sweat Achieve
-            </span>
-          </Link>
-
-          <div className="flex items-center gap-4">
-            <Link
+    <html lang="en" className="scroll-smooth">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bg-[#0A0A0A] text-white font-sans antialiased`}
+      >
+        <Navigation />
+        <main className="pt-20 pb-20 md:pb-0">
+          {children}
+        </main>
+      </body>
+    </html>
+  );
+}
               to={createPageUrl("Notifications")}
               className="relative p-2 rounded-xl hover:bg-white/5 transition-colors"
             >
