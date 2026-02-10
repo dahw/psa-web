@@ -110,7 +110,7 @@ export default function WorkoutDetail() {
   const progress = (completedExercises.length / mockWorkout.exercises.length) * 100;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
       {/* Header */}
       <Link href="/workouts" className="inline-flex items-center gap-2 text-[#6B8E23] mb-6 hover:text-[#4A5D23]">
         ← Back to Workouts
@@ -120,8 +120,8 @@ export default function WorkoutDetail() {
       <Card className="mb-8 bg-gradient-to-br from-[#1A1A1A] to-[#0F0F0F]">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <h1 className="text-4xl font-black mb-2">{mockWorkout.name}</h1>
-            <p className="text-[#9CA3AF] text-lg">{mockWorkout.description}</p>
+            <h1 className="text-4xl md:text-5xl font-black mb-2">{mockWorkout.name}</h1>
+            <p className="text-[#9CA3AF] text-lg md:text-xl">{mockWorkout.description}</p>
           </div>
         </div>
 

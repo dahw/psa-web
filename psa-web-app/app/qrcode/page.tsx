@@ -1,9 +1,10 @@
 'use client';
 
-import { Card, Button, Badge } from '@/components/UI';
+import { Card, Button } from '@/components/UI';
 import QRCode from 'qrcode.react';
 import { Download, Share2, Copy } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function QRCodePage() {
   const [copied, setCopied] = useState(false);
@@ -13,13 +14,13 @@ export default function QRCodePage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleDownloadQR = (id: string) => {
-    const qrElement = document.getElementById(id);
-    if (qrElement) {
-      const canvas = qrElement.querySelector('canvas');
+  const handleDownloadQR = (id: string, filename: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const canvas = element.querySelector('canvas');
       if (canvas) {
         const link = document.createElement('a');
-        link.download = `${id}-qr.png`;
+        link.download = `${filename}.png`;
         link.href = canvas.toDataURL();
         link.click();
       }
@@ -27,37 +28,58 @@ export default function QRCodePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-black tracking-tight mb-2">
-          QR Codes<span className="text-[#6B8E23]">.</span>
-        </h1>
-        <p className="text-[#9CA3AF] text-lg">Quick access to gym check-in and app downloads</p>
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
+      {/* Header with Logo */}
+      <div className="mb-8 md:mb-10 flex items-center gap-3 md:gap-4">
+        <Image
+          src="/Workout.png"
+          alt="PSA Logo"
+          width={40}
+          height={40}
+          className="rounded-lg w-10 h-10"
+        />
+        <div>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-2">
+            QR Codes<span className="text-[#6B8E23]">.</span>
+          </h1>
+          <p className="text-[#9CA3AF] text-lg md:text-xl">Quick access to gym check-in and app downloads</p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Gym Check-In */}
         <Card className="flex flex-col items-center text-center">
           <h3 className="text-xl font-bold mb-6">Gym Check-In</h3>
-          <div className="bg-white p-6 rounded-xl mb-6">
-            <QRCode
-              id="gym-checkin-qr"
-              value="https://psa.fit/checkin/user123"
-              size={200}
-              level="H"
-              includeMargin={true}
-            />
+          
+          {/* QR Code Container with Gradient */}
+          <div 
+            className="p-8 rounded-2xl mb-6 shadow-lg"
+            style={{
+              background: 'linear-gradient(135deg, #559207 0%, #77c600 100%)'
+            }}
+          >
+            <div id="gym-checkin-qr" className="bg-white p-2 rounded-lg inline-block">
+              <QRCode
+                value="https://psa.fit/checkin/user123"
+                size={180}
+                level="H"
+                includeMargin={true}
+                fgColor="#0A0A0A"
+                bgColor="#FFFFFF"
+              />
+            </div>
           </div>
+
           <p className="text-[#9CA3AF] text-sm mb-6">
             Scan this QR code when you arrive at the gym to check in
           </p>
+
           <div className="flex gap-3 w-full">
             <Button
               variant="primary"
               fullWidth
               size="sm"
-              onClick={() => handleDownloadQR('gym-checkin-qr')}
+              onClick={() => handleDownloadQR('gym-checkin-qr', 'gym-checkin')}
               className="flex items-center justify-center gap-2"
             >
               <Download size={18} /> Download
@@ -77,24 +99,36 @@ export default function QRCodePage() {
         {/* App Download */}
         <Card className="flex flex-col items-center text-center">
           <h3 className="text-xl font-bold mb-6">Download App</h3>
-          <div className="bg-white p-6 rounded-xl mb-6">
-            <QRCode
-              id="app-download-qr"
-              value="https://psa.fit/download/app"
-              size={200}
-              level="H"
-              includeMargin={true}
-            />
+
+          {/* QR Code Container with Gradient */}
+          <div 
+            className="p-8 rounded-2xl mb-6 shadow-lg"
+            style={{
+              background: 'linear-gradient(135deg, #559207 0%, #77c600 100%)'
+            }}
+          >
+            <div id="app-download-qr" className="bg-white p-2 rounded-lg inline-block">
+              <QRCode
+                value="https://psa.fit/download/app"
+                size={180}
+                level="H"
+                includeMargin={true}
+                fgColor="#0A0A0A"
+                bgColor="#FFFFFF"
+              />
+            </div>
           </div>
+
           <p className="text-[#9CA3AF] text-sm mb-6">
             Share with friends so they can download the PSA app
           </p>
+
           <div className="flex gap-3 w-full">
             <Button
               variant="primary"
               fullWidth
               size="sm"
-              onClick={() => handleDownloadQR('app-download-qr')}
+              onClick={() => handleDownloadQR('app-download-qr', 'app-download')}
               className="flex items-center justify-center gap-2"
             >
               <Download size={18} /> Download

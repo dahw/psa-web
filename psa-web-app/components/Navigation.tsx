@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   Home,
@@ -39,9 +40,14 @@ export default function Navigation() {
             href="/dashboard"
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-[#4A5D23] to-[#6B8E23] rounded-xl flex items-center justify-center font-black text-lg">
-              PSA
-            </div>
+            <Image
+              src="/Workout.png"
+              alt="PSA Logo"
+              width={40}
+              height={40}
+              priority
+              className="rounded-lg object-cover"
+            />
             <span className="font-bold text-lg tracking-tight hidden sm:block">
               Push Sweat Achieve
             </span>

@@ -67,16 +67,16 @@ export default function BookingPage() {
   const monthName = currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-black tracking-tight mb-2">
+      <div className="mb-8 md:mb-10">
+        <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-2">
           Book a Class<span className="text-[#6B8E23]">.</span>
         </h1>
-        <p className="text-[#9CA3AF] text-lg">Schedule your training with our expert trainers</p>
+        <p className="text-[#9CA3AF] text-lg md:text-xl">Schedule your training with our expert trainers</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">
         {/* Calendar Sidebar */}
         <div className="lg:col-span-1">
           <Card>

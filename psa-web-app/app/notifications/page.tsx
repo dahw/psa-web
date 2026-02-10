@@ -121,15 +121,15 @@ export default function NotificationsPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-8 md:mb-10">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-black tracking-tight mb-2">
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-2">
               Notifications<span className="text-[#6B8E23]">.</span>
             </h1>
-            <p className="text-[#9CA3AF] text-lg">
+            <p className="text-[#9CA3AF] text-base sm:text-lg">
               {unreadCount > 0 ? `${unreadCount} new notification` + (unreadCount !== 1 ? 's' : '') : 'All caught up!'}
             </p>
           </div>

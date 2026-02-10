@@ -48,7 +48,7 @@ export function StatBox({ label, value, unit, trend, icon, className }: StatBoxP
   );
 }
 
-interface Button Props {
+interface ButtonProps {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
@@ -97,13 +97,14 @@ export function Button({
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'success' | 'warning' | 'danger';
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
   className?: string;
 }
 
 export function Badge({ children, variant = 'primary', className }: BadgeProps) {
   const variants = {
     primary: 'bg-[#6B8E23]/20 text-[#6B8E23]',
+    secondary: 'bg-[#2A2A2A] text-[#9CA3AF]',
     success: 'bg-green-500/20 text-green-400',
     warning: 'bg-yellow-500/20 text-yellow-400',
     danger: 'bg-red-500/20 text-red-400',
