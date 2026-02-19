@@ -1,23 +1,20 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Card, Button, Badge } from '@/components/UI';
 import { Calendar, Clock, User, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Mock data
 const trainers = [
-  { id: 1, name: 'Alex Johnson', specialty: 'Strength Training', rating: 4.9, image: '👨‍🏫' },
-  { id: 2, name: 'Sarah Williams', specialty: 'Cardio & HIIT', rating: 4.8, image: '👩‍🏫' },
-  { id: 3, name: 'Mike Rodriguez', specialty: 'CrossFit', rating: 4.7, image: '👨‍🏫' },
+  { id: 1, name: 'Cameron Bankhead', specialty: 'Lead Trainer', rating: 4.9, image: '/Bankhead_AI.png' },
 ];
 
 const classSchedule = [
-  { id: 1, name: 'Morning Bootcamp', time: '6:00 AM', trainer: 'Alex', capacity: 20, booked: 18, date: '2025-02-10' },
-  { id: 2, name: 'HIIT Cardio', time: '12:00 PM', trainer: 'Sarah', capacity: 15, booked: 12, date: '2025-02-10' },
-  { id: 3, name: 'CrossFit WOD', time: '5:00 PM', trainer: 'Mike', capacity: 25, booked: 22, date: '2025-02-10' },
-  { id: 4, name: 'Strength Training', time: '6:30 PM', trainer: 'Alex', capacity: 20, booked: 15, date: '2025-02-10' },
-  { id: 5, name: 'Yoga & Recovery', time: '7:00 PM', trainer: 'Sarah', capacity: 30, booked: 25, date: '2025-02-10' },
-  { id: 6, name: 'Morning Bootcamp', time: '6:00 AM', trainer: 'Alex', capacity: 20, booked: 18, date: '2025-02-11' },
+  { id: 1, name: 'Morning Bootcamp', time: '6:00 AM', trainer: 'Cameron Bankhead', capacity: 20, booked: 18, date: '2025-02-10' },
+  { id: 2, name: 'HIIT Cardio', time: '12:00 PM', trainer: 'Cameron Bankhead', capacity: 15, booked: 12, date: '2025-02-10' },
+  { id: 4, name: 'Strength Training', time: '6:30 PM', trainer: 'Cameron Bankhead', capacity: 20, booked: 15, date: '2025-02-10' },
+  { id: 6, name: 'Morning Bootcamp', time: '6:00 AM', trainer: 'Cameron Bankhead', capacity: 20, booked: 18, date: '2025-02-11' },
 ];
 
 function DaysInMonth(date: Date) {
@@ -257,7 +254,12 @@ export default function BookingPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {trainers.map((trainer) => (
                 <Card key={trainer.id} className="text-center">
-                  <div className="text-5xl mb-3">{trainer.image}</div>
+                  <img
+                    src={trainer.image}
+                    alt={trainer.name}
+                    loading="lazy"
+                    className="mx-auto mb-3 w-20 h-20 rounded-full"
+                  />
                   <h4 className="font-bold text-lg mb-1">{trainer.name}</h4>
                   <p className="text-sm text-[#9CA3AF] mb-4">{trainer.specialty}</p>
                   <div className="flex items-center justify-center gap-1 mb-4">

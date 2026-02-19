@@ -1,10 +1,13 @@
 'use client';
 
 import { Card, Button } from '@/components/UI';
-import QRCode from 'qrcode.react';
+import dynamic from 'next/dynamic';
 import { Download, Share2, Copy } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
+
+// dynamically load QRCode so its sizable library doesn't inflate the main bundle
+const QRCode = dynamic(() => import('qrcode.react'), { ssr: false });
 
 export default function QRCodePage() {
   const [copied, setCopied] = useState(false);
