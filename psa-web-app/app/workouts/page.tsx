@@ -125,7 +125,7 @@ export default function WorkoutsPage() {
   const hasActiveFilters = selectedGoal || selectedDifficulty;
 
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
+    <div className="w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 md:pt-10 md:pb-16 mt-20 md:mt-28">
       {/* Header */}
       <div className="mb-8 md:mb-10">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-2">

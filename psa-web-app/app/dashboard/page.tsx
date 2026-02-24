@@ -7,7 +7,8 @@ import Link from 'next/link';
 // Mock data
 const workoutStreak = 12;
 const weeklySessions = 5;
-const totalCalories = 3240;
+const workoutsCompleted = 12;
+const monthlyWorkoutTarget = 15;
 
 const todayWorkout = {
   id: 1,
@@ -26,7 +27,7 @@ const upcomingSessions = [
 
 export default function Dashboard() {
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
+    <div className="w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 md:pt-10 md:pb-16 mt-20 md:mt-28">
       {/* Welcome Header */}
       <div className="mb-8 md:mb-10">
         <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-2">
@@ -50,9 +51,9 @@ export default function Dashboard() {
           icon={<Clock size={24} />}
         />
         <StatBox
-          label="Calories Burned"
-          value="3.2K"
-          unit="kcal"
+          label="Workouts Completed"
+          value={workoutsCompleted}
+          unit={`/ ${monthlyWorkoutTarget}`}
           icon={<Zap size={24} />}
         />
         <StatBox

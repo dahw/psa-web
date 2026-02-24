@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
-import Navigation from "@/components/Navigation";
+import AppShell from "@/components/AppShell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,14 +30,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
       </head>
-      <body
-        suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} bg-[#0A0A0A] text-white font-sans antialiased`}
-      >
-        <Navigation />
-        <main className="min-h-screen flex flex-col pt-16 md:pt-20 pb-6 md:pb-10 lg:pb-12">
-          {children}
-        </main>
+      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} bg-[#0A0A0A] text-white font-sans antialiased`}>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
