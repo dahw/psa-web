@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, Button, Badge } from '@/components/UI';
-import { Bell, X, Check, AlertCircle, Clock, Zap } from 'lucide-react';
+import { Card, Button } from '@/components/UI';
+import { Bell, X, Check, AlertCircle } from 'lucide-react';
 
 // Mock notifications data
 const mockNotifications = [

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow auth routes
+Disallow: /api/auth/
+Disallow: /auth/signin
+
+# Sitemap location
+Sitemap: https://psa.fit/sitemap.xml

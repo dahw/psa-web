@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Card, Button, Badge } from '@/components/UI';
-import { User, Mail, Phone, MapPin, Trophy, Settings, Zap, Bell, LogOut } from 'lucide-react';
+import { Mail, Phone, MapPin, Trophy, Settings, Bell, LogOut } from 'lucide-react';
 
 // Mock user data
 const userProfile = {

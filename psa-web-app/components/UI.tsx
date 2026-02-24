@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 
 interface CardProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   hover?: boolean;
   gradient?: boolean;
@@ -28,12 +28,11 @@ interface StatBoxProps {
   label: string;
   value: string | number;
   unit?: string;
-  trend?: 'up' | 'down' | 'neutral';
   icon?: React.ReactNode;
   className?: string;
 }
 
-export function StatBox({ label, value, unit, trend, icon, className }: StatBoxProps) {
+export function StatBox({ label, value, unit, icon, className }: StatBoxProps) {
   return (
     <Card className={clsx('flex items-start justify-between', className)}>
       <div>
@@ -48,13 +47,12 @@ export function StatBox({ label, value, unit, trend, icon, className }: StatBoxP
   );
 }
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   className?: string;
-  [key: string]: any;
 }
 
 export function Button({
