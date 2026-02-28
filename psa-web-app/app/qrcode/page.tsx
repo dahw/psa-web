@@ -31,7 +31,7 @@ export default function QRCodePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12 mt-20 md:mt-28">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
       {/* Header with Logo */}
       <div className="mb-8 md:mb-10 flex items-center gap-3 md:gap-4">
         <Image
